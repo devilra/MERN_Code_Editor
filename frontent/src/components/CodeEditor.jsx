@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Editor from "@monaco-editor/react";
 import axios from "axios";
+import { api } from "../api";
 
 const CodeEditor = () => {
   const [code, setCode] = useState("");
@@ -14,7 +15,7 @@ const CodeEditor = () => {
     setOutput("Running...");
 
     try {
-      const response = await axios.post("http://localhost:4000/run", {
+      const response = await api.post("/run", {
         code,
         language,
       });
